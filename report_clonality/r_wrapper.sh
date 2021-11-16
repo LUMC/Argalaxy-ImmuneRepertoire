@@ -17,7 +17,7 @@ if grep -q "$species.*${locus}D" "$dir/genes.txt" ; then
 fi
 echo "$species"
 if [[ "$species" == *"custom"* ]] ; then
-	loci=(${locus//;/ })
+	loci=("${locus//;/ }")
 	useD="true"
 	echo "${loci[@]}"
 	if [[ "${#loci[@]}" -eq "2" ]] ; then

@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-inputFiles=($1)
+inputFiles=("$1")
 outputDir=$3
 outputFile=$3/index.html #$1
 clonalType=$4
@@ -12,16 +12,16 @@ clonality_method=$8
 html=$2
 dir="$(cd "$(dirname "$0")" && pwd)"
 array=("$@")
-echo "<html><h3>Progress</h3><table><tr><td>info</td></tr>" > $html
-echo "<tr><td>-----------------------------------</td></tr>" >> $html
+echo "<html><h3>Progress</h3><table><tr><td>info</td></tr>" > "$html"
+echo "<tr><td>-----------------------------------</td></tr>" >> "$html"
 
 #mkdir $PWD/igblastdatabase
 #unzip $dir/database.zip -d $PWD/igblastdatabase/
 #export IGDATA=$PWD/igblastdatabase/
 
-echo "python: `which python`"
-echo "R: `which R`"
-echo "Rscript: `which Rscript`"
+echo "python: $(which python)"
+echo "R: $(which R)"
+echo "Rscript: $(which Rscript)"
 
 id=""
 forwardSlash="/"
@@ -32,15 +32,15 @@ for current in "${inputFiles[@]}"
 do
 	if [[ "$current" != *"$forwardSlash"* ]]; then
 			id="$current"
-			mergerInput+=($id)
+			mergerInput+=("$id")
 			count=1
 			continue
 	fi
 	echo "working on $current"
-	fileName=$(basename $current)
+	fileName=$(basename "$current")
 	fileName="${fileName%.*}"
 	parsedFileName="$PWD/$fileName.parsed"
-	f=$(file $current)
+	f=$(file "$current")
 	zipType="Zip archive"
 	zxType="XZ compressed data"
 	echo "filetype of ${id}: $f"
@@ -53,7 +53,7 @@ do
 		echo "<tr><td>Sample $count of patient $id is not a zip file so assuming fasta/fastq, using igBLASTn</td></tr>" >> $html
 		bash ${dir}/igblast/igblast.sh $current "$species" $locus $parsedFileName
 	fi
-	mergerInput+=($parsedFileName)
+	mergerInput+=("$parsedFileName")
 	count=$((count+1))
 done
 
