@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-inputFiles=("$1")
+inputFiles=($1)  # Input files can be multiple files
 outputDir=$3
 outputFile=$3/index.html #$1
 clonalType=$4
