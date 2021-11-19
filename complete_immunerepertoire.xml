@@ -1,4 +1,4 @@
-<tool id="complete_immunerepertoire_igg" name="Immune Repertoire pipeline" version="1.0.1">
+<tool id="complete_immunerepertoire_igg" name="Immune Repertoire pipeline" version="1.0.2">
 	<requirements>
         <requirement type="package" version="2.3">r-gridextra</requirement>
         <requirement type="package" version="3.0.0">r-ggplot2</requirement>
