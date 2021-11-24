@@ -18,4 +18,8 @@ dependencies:
   - bash=4.4.18
   - file=5.39
   - font-ttf-ubuntu=0.83
-
+  - tar=1.34
+  - unzip=6.0
+  - unrar=0.4
+  - p7zip=16.02
+  - findutils=4.6.0
