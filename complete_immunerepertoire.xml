@@ -38,7 +38,12 @@ complete.sh "
 			<repeat name="samples" title="Replicate" min="1" default="1">
 					<param name="sample" type="data" label="Replicate to Process" />
 			</repeat>
-			<param name="id" type="text" label="ID" />
+			<param name="id" type="text" label="ID">
+				<!-- This replace whitespace with _ -->
+				<sanitizer invalid_char="_" sanitize="true">
+					<valid initial="default"/>
+				</sanitizer>
+			</param>
 		</repeat>
 		<param name="clonaltype" type="select" label="Clonal Type Definition">
 			<option value="none">Don't remove duplicates based on clonaltype</option>
