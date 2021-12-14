@@ -1,4 +1,4 @@
-<tool id="complete_immunerepertoire_igg" name="Immune Repertoire pipeline" version="1.0.2">
+<tool id="complete_immunerepertoire_igg" name="Immune Repertoire pipeline" version="1.1.0.alpha1">
 	<requirements>
         <requirement type="package" version="2.3">r-gridextra</requirement>
         <requirement type="package" version="3.0.0">r-ggplot2</requirement>
@@ -10,7 +10,13 @@
         <requirement type="package" version="1.3.1">r-stringr</requirement>
         <requirement type="package" version="0.69.6">circos</requirement>
         <requirement type="package" version="0.23">circos-tools</requirement>
-    </requirements>
+	  	<requirement type="package" version="1.34">tar</requirement>
+		<requirement type="package" version="6.0">unzip</requirement>
+		<requirement type="package" version="0.4">unrar</requirement>
+		<requirement type="package" version="16.02">p7zip</requirement>
+		<requirement type="package" version="4.6.0">findutils</requirement>
+   		<container type="docker">quay.io/rhpvorderman/mulled-v2-62aaeb9dad7d9973e676594c3aa69e605c73cd0c:80328e762d48b0d7b11c4fa41a5c09ca43d49db9-0</container>
+	</requirements>
 	<description> </description>
 	<command interpreter="bash">
 complete.sh "
@@ -32,7 +38,12 @@ complete.sh "
 			<repeat name="samples" title="Replicate" min="1" default="1">
 					<param name="sample" type="data" label="Replicate to Process" />
 			</repeat>
-			<param name="id" type="text" label="ID" />
+			<param name="id" type="text" label="ID">
+				<!-- This replace whitespace with _ -->
+				<sanitizer invalid_char="_" sanitize="true">
+					<valid initial="default"/>
+				</sanitizer>
+			</param>
 		</repeat>
 		<param name="clonaltype" type="select" label="Clonal Type Definition">
 			<option value="none">Don't remove duplicates based on clonaltype</option>
