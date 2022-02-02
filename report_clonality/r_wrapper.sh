@@ -9,6 +9,8 @@ locus=$6
 filterproductive=$7
 clonality_method=$8
 
+ALL_OUTPUTS_ZIP="$outputDir/all_outputs.zip"
+
 dir="$(cd "$(dirname "$0")" && pwd)"
 useD="false"
 if grep -q "$species.*${locus}D" "$dir/genes.txt" ; then
@@ -334,9 +336,36 @@ if [ -a "$outputDir/junctionAnalysisProd_mean_wD.txt" ] ; then
 	echo "</div>" >> $outputFile
 fi
 
+
+# Create zip file with all download files
+# Use 7za as it is packaged in the container already.
+cd "$outputDir" || exit 1
+
+7za a -tzip "$ALL_OUTPUTS_ZIP" -- \
+  allUnique.txt VFFrequency.txt VFrequency.txt \
+  JFrequency.txt DReadingFrame.txt CDR3LengthPlot.txt \
+  AAComposition.txt clonalityComplete.txt
+
+if [[ "$useD" == "true" ]] ; then
+  7za a -tzip "$ALL_OUTPUTS_ZIP" -- \
+  DFFrequency.txt DFrequency.txt
+fi
+for sample in $samples; do
+  if [[ "$useD" == "true" ]] ; then
+    7za a -tzip "$ALL_OUTPUTS_ZIP" -- \
+    "HeatmapVD_$sample.txt" "HeatmapDJ_$sample.txt" \
+    "${sample}_VD_circos.txt" "${sample}_DJ_circos.txt"
+  fi
+  7za a -tzip "$ALL_OUTPUTS_ZIP" -- \
+  "HeatmapVJ_$sample.txt" "${sample}_VJ_circos.txt"
+done
+
+cd $dir || exit 1
+
 echo "<div class='tabbertab' title='Downloads'>" >> $outputFile
 echo "<table class='pure-table pure-table-striped'>" >> $outputFile
 echo "<thead><tr><th>Description</th><th>Link</th></tr></thead>" >> $outputFile
+echo "<tr><td>All outputs below in a zip file</td><td><a href='$ALL_OUTPUTS_ZIP'>Download</a></td></tr>" >> $outputFile
 echo "<tr><td>The filtered dataset</td><td><a href='allUnique.txt'>Download</a></td></tr>" >> $outputFile
 echo "<tr><td colspan='2' style='background-color:#E0E0E0;'>Gene frequencies</td></tr>" >> $outputFile
 
