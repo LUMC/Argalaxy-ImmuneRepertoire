@@ -15,7 +15,7 @@
 		<requirement type="package" version="0.4">unrar</requirement>
 		<requirement type="package" version="16.02">p7zip</requirement>
 		<requirement type="package" version="4.6.0">findutils</requirement>
-   		<container type="docker">quay.io/rhpvorderman/mulled-v2-62aaeb9dad7d9973e676594c3aa69e605c73cd0c:80328e762d48b0d7b11c4fa41a5c09ca43d49db9-0</container>
+   		<container type="docker">quay.io/argalaxy/mulled-v2-62aaeb9dad7d9973e676594c3aa69e605c73cd0c:80328e762d48b0d7b11c4fa41a5c09ca43d49db9-0</container>
 	</requirements>
 	<description> </description>
 	<command interpreter="bash">
