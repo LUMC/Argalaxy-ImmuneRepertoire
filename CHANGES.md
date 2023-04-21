@@ -1,3 +1,8 @@
+version 1.1.1
+-------------
++ Make sure the path to the zip is correct.
++ The html files are now UTF-8 encoded to prevent decoding errors.
+
 version 1.1.0
 -------------
 + Add a container requirement to allow using docker or singularity.
