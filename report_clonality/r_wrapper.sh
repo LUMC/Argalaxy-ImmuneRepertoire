@@ -365,7 +365,7 @@ cd $dir || exit 1
 echo "<div class='tabbertab' title='Downloads'>" >> $outputFile
 echo "<table class='pure-table pure-table-striped'>" >> $outputFile
 echo "<thead><tr><th>Description</th><th>Link</th></tr></thead>" >> $outputFile
-echo "<tr><td>All outputs below in a zip file</td><td><a href='$ALL_OUTPUTS_ZIP'>Download</a></td></tr>" >> $outputFile
+echo "<tr><td>All outputs below in a zip file</td><td><a href='all_outputs.zip'>Download</a></td></tr>" >> $outputFile
 echo "<tr><td>The filtered dataset</td><td><a href='allUnique.txt'>Download</a></td></tr>" >> $outputFile
 echo "<tr><td colspan='2' style='background-color:#E0E0E0;'>Gene frequencies</td></tr>" >> $outputFile
 
