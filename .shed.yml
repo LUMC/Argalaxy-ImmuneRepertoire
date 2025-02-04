@@ -1,0 +1,4 @@
+description: A set of tools used in the Antigen Receptor Galaxy VM
+name: argalaxy_tools
+owner: davidvanzessen
+homepage_url: https://github.com/lumc/argalaxy-immunerepertoire
