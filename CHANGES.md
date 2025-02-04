@@ -1,3 +1,8 @@
+version 1.1.2
+-------------
++ Set a profile version so exiting with a tool exit code of 0 will indicate
+  the job has succeeded.
+
 version 1.1.1
 -------------
 + Make sure the path to the zip is correct.
