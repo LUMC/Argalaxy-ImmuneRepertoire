@@ -1,3 +1,7 @@
+version 1.1.3
+-------------
++ Fix an issue where the tool script could not be found.
+
 version 1.1.2
 -------------
 + Set a profile version so exiting with a tool exit code of 0 will indicate
