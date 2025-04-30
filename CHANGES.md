@@ -1,3 +1,8 @@
+version 1.1.4
+-------------
++ Fix an issue caused by IDs with spaces in them. These are now
+  automatically replaced with underscores.
+
 version 1.1.3
 -------------
 + Fix an issue where the tool script could not be found.
